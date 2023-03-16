@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -15,30 +20,36 @@
 <body>
     <div id="app">
         
-       <header class="py-3">
-            <div class="container">
-                <div class="row justify-between">
-                    <div class="col-11">
-                        <input type="text" name="inputItem" id="inputItem" class="d-block w-100" v-model="textField" @keyup.enter="addItem">
-                    </div>
-                    <div class="col-1 text-right">
-                        <button @click="addItem"><i class="fa-solid fa-plus"></i></button>
+       <div class="main-wrapper">
+            <header class="p-3">
+                <div class="container">
+                    <div class="row justify-between">
+                        <div class="col-11">
+                            <input type="text" placeholder="Inserisci un nuovo task" name="inputItem" id="inputItem" class="d-block input-control" v-model="textField" @keyup.enter="addItem">
+                            <div class="error-msg" v-show="throwError">Il campo non può essere vuoto o inferiore a 5 caratteri.</div>
+                        </div>
+                        <div class="col-1 text-right">
+                            <button @click="addItem" class="btn"><i class="fa-solid fa-plus"></i></button>
+                        </div>
                     </div>
                 </div>
-            </div>
-       </header>
-       <main>
-            <div class="container">
-                <ul class="list">
-                    <li v-for="(item, index) in list" @click="toggleStatus(index)">
-                        <div class="d-flex justify-between">
-                            <div class="text" :class="list[index].done ? 'line-through':''">{{item.text}}</div>
-                            <button @click="removeItem(index)">Remove</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-       </main>
+        </header>
+        <main>
+                <div class="container">
+                    <ul class="list" v-if="list.length > 0">
+                        <li v-for="(item, index) in list" @click="toggleStatus(index)" class="p-2">
+                            <div class="d-flex justify-between">
+                                <div class="text" :class="list[index].done ? 'line-through':''">{{item.text}}</div>
+                                <button @click="removeItem(index)" class="btn btn-alternate"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="empty p-3" v-else>
+                        Nessun elemento nella lista
+                    </div>
+                </div>
+        </main>
+       </div>
 
     </div>
 

@@ -7,16 +7,8 @@ createApp({
       textField : "",
       list : [
         {
-            text: 'sample',
+            text: 'Questo è un task di esempio',
             done: true
-        },
-        {
-            text: 'sample1',
-            done: false
-        },
-        {
-            text: 'sample2',
-            done: false
         }
       ]
     }
@@ -26,6 +18,7 @@ createApp({
         if(this.textField.length >= 5){
             this.throwError = false;
             this.list.push({text: this.textField, done: false});
+            this.textField = "";
         } else {
             this.throwError = true;
         }
