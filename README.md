@@ -11,7 +11,7 @@ THUMBNAIL GIF
 -->
 
 <p align="center">
-  <img src="https://github.com/mattiamoneta/js-campominato-dom/blob/main/thumbnail.gif" alt="Vue TodoList"/>
+  <img src="https://github.com/mattiamoneta/vue-todolist/blob/main/thumbnail.gif" alt="Vue TodoList"/>
 </p>
 
 <!---
